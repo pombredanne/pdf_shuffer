@@ -1,0 +1,51 @@
+I have many colorful PDF files to print. Printers don't work well:
+1. The pages size and orientation vary. However printers auto-adjust all pages per the ratio calculated from the 1st page.
+2. Colorful printing is somewhat expensive. I want to delete some meanless pages.
+3. Some files consist of several sections. I want to ensure the first page of a section don't mix with the last page of the previous section.
+4. Some pdf pages consist of two physical pages, others consist of only one. I want the same font size when printing.
+
+I have no budget for commercial PDF editors, so comes this script. I use it to process PDF files, and then print them directly, a.k.a disabling all paper auto-adjustment options of printer such as page scale, auto center and etc.
+
+This script is based on following utils:
+pdftk		http://www.pdflabs.com/. PDFtk is a command-line tool to merge/split/rotate/burst pdf.
+pdfinfo		a tool inside poppler-utils.
+pdfjam		http://go.warwick.ac.uk/pdfjam, http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic-research/firth/software/pdfjam. PDFjam is a small collection of shell scripts which provide a simple interface to much of the functionality of the excellent pdfpages PDF file package. The main script is named "pdfjam". All of the other scripts are simple wrappers for calls to pdfjam. For example, pdfbook, pdf90, and etc.
+gs		Ghostscript (PostScript and PDF language interpreter and previewer). man 7 gs.
+
+These depencency can be installed as following on Linux Mint 15+:
+$ sudo apt-get install pdfjam texlive-latex-base texlive-latex-recommended pdftk poppler-utils ghostscript 
+
+As following are some examples. The original and processed PDF files are at the examples directory. 
+zhichyu@jupiter:~$ pdf_shuffer.py -o processed original/57-0\ red\ book.pdf
+type "help" for help, "quit" or "exit" to quit
+[op exp] split n@2-16
+[op exp] join 2*n+1
+[op exp] resize a4paper
+[op exp] quit
+zhichyu@jupiter:~$ pdf_shuffer.py -o processed original/77-0\ Knuffle\ bunny.pdf
+type "help" for help, "quit" or "exit" to quit
+[op exp] join n@3,5,8,10,12,14,16,18,21,23,25,27
+[op exp] add 2:1,18:1
+[op exp] join 1,18
+[op exp] rotate 1,2,5,12,17       
+[op exp] resize a4paper
+[op exp] quit
+zhichyu@jupiter:~$ pdf_shuffer.py -o processed original/97\ george\ and\ martha.pdf     
+type "help" for help, "quit" or "exit" to quit
+[op exp] add 2:1,7:1,11:1,15:1,19:1
+[op exp] join 1,7,12,17,22
+[op exp] resize a4paper
+[op exp] quit
+zhichyu@jupiter:~$ pdf_shuffer.py -o processed original/Go\,Dog.Go\!.pdf    
+type "help" for help, "quit" or "exit" to quit
+[op exp] delete 2,24
+[op exp] join 2*n+1
+[op exp] resize a4paper
+[op exp] quit
+zhichyu@jupiter:~$ pdf_shuffer.py -o processed original/How\ Do\ Dinosaurs\ Say\ Good\ Night.pdf 
+type "help" for help, "quit" or "exit" to quit
+[op exp] move 21:2
+[op exp] join 1
+[op exp] resize a4paper
+[op exp] quit
+
