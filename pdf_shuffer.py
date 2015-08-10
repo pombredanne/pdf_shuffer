@@ -12,6 +12,7 @@ briss		http://sourceforge.net/projects/briss/. This project aims to offer a simp
 http://ma.juii.net/blog/scale-page-content-of-pdf-files, How to scale the page content of PDF files?
 http://stackoverflow.com/questions/6118635/what-is-the-best-pdf-open-source-library-for-java
 http://blog.mashape.com/post/66047403916/list-of-50-pdf-generation-manipulation-and
+http://www.cyberciti.biz/faq/removing-password-from-pdf-on-linux/, HowTo: Linux Remove a PDF File Password Using Command Line Options
 
 PDF Clown	http://www.stefanochizzolini.it/common/contents/projects/clown/samples/PageCoordinatesSample.java, ctm.getScaleX()
 iText		http://itextpdf.com/product/itext. iText is a Java PDF library that allows you to CREATE, ADAPT, INSPECT and MAINTAIN documents in the Portable Document Format (PDF). It's dual-licensed.
